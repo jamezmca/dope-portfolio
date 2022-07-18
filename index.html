@@ -191,16 +191,19 @@
         }
 
         .project-item {
-            box-shadow: 0 0 4px 2px lightgray;
+            /* box-shadow: 0 0 4px 2px lightgray; */
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             border: 1px solid transparent;
+
         }
 
         .project-item:hover {
-            box-shadow: 0 0 8px 3px lightgray;
+            /* box-shadow: 0 0 8px 3px lightgray; */
+            border: 1px solid #0f172a;
+
         }
 
 
@@ -283,6 +286,10 @@
             opacity: 0.5;
         }
 
+        .text-shadoww {
+            text-shadow: 0 0 1px transparent, 0 1px 2px rgb(0 0 0 / 80%);
+        }
+
         @media (min-width: 640px) {
             header h1 {
                 font-size: 6em;
@@ -323,6 +330,10 @@
                 height: 2px;
             }
         }
+
+        .tech-stack {
+            list-style-position: inside;
+        }
     </style>
 </head>
 
@@ -350,16 +361,18 @@
             <h2 class="section-header">About Me</h2>
             <div class="section-wrapper">
                 <div class="section-content">
-                    <p>vananana telephone vananana telephonevananana telephonevananana telephonevananana
-                        telephoonevananana telephonevananana telephonevananana telephonevananana telephonevananana
-                        telephonevananana telephonevananana telephonevananana telephone</p>
-                    <p>vananana telephone vananana telephonevananana telephonevananana telephonevananana
-                        telephonevananana telephonevananana telephonevananana telephonevananana telephonevananana
-                        telephonevananana telephonevananana telephonevananana telephonevananana telephonevananana
-                        telephonevananana telephone</p>
-                    <p>vananana telephone vananana telephonevananana telephonevananana telephonevananannana
-                        telephonevananana telephonevananana telephonevananana telephonevananana telephonevananana
-                        telephonevananana telephonevananana telephone</p>
+                    <p>Hi.</p>
+                    <p>My name is James and I am a Full Stack Developer. Originally qualifying as a civil engineering, I
+                        realised my passion for programming and have since pursued a career in the industry, creating a
+                        myriad of unique and exciting web applications.</p>
+                    <p>I love being able to express my creativity through my internet creations. </p>
+                    <p>My favorite technologies currently are: </p>
+                    <ul class="tech-stack">
+                        <li>React + Next.js or SvelteKIT</li>
+                        <li>TailwindCSS</li>
+                        <li>Node.js</li>
+                        <li>Firebase/Firestore or PostgreSQL</li>
+                    </ul>
 
                 </div>
             </div>
@@ -372,31 +385,38 @@
                         <div class="experience-header">
                             <h2>Full Stack Developer</h2>
                             <div class="experience-subheader">
-                                <p>Banana Pole</p>
-                                <p>11/12 - now</p>
+                                <p>Zetane Systems</p>
+                                <p>11/21 - present</p>
                             </div>
                         </div>
-                        <p>I made a full stack Saas platform with all sorts of crazyyyyy features.</p>
+                        <p>Primary contributer to the Zetane Systems Protector platform. The platform is a Saas product
+                            aimed to improve Quality Assurance processes for machine learning and AI applications.</p>
+                        <p>The platform frontend is built in Next.js + TailwindCSS with a Django + PostgreSQL + Redis
+                            backend. The platform is hosted on AWS and we run our patented machine learning code in
+                            virtual, dockerized instances spun up with kubernetes using AWS EKS service.</p>
                     </div>
                     <div class="resume-item">
                         <div class="experience-header">
-                            <h2>Full Stack Developer</h2>
+                            <h2>Structural Engineer</h2>
                             <div class="experience-subheader">
-                                <p>Banana Pole</p>
-                                <p>11/12 - now</p>
+                                <p>McMillen Jacobs Associates</p>
+                                <p>08/18 - 05/21</p>
                             </div>
                         </div>
-                        <p>I made a full stack Saas platform with all sorts of crazyyyyy features.</p>
+                        <p>Design Engineer, Client Representative and QA Engineer for Watercare’s $3.4bn Central
+                            Interceptor project.</p>
                     </div>
                     <div class="resume-item">
                         <div class="experience-header">
-                            <h2>Full Stack Developer</h2>
+                            <h2>Math & Sciences Tutor</h2>
                             <div class="experience-subheader">
-                                <p>Banana Pole</p>
-                                <p>11/12 - now</p>
+                                <p>Valdo Academics</p>
+                                <p>10/13 - now</p>
                             </div>
                         </div>
-                        <p>I made a full stack Saas platform with all sorts of crazyyyyy features.</p>
+                        <p>I have been a mathematics and sciences tutor for students of all ages for many year. I always
+                            aim to provide a safe learning environments with students and share my passion for
+                            education, encouraging curiosity and understanding.</p>
                     </div>
                 </div>
             </div>
@@ -408,11 +428,11 @@
                     <div class="project-item">
                         <img src="/public/sf.png" alt="swoldier-fitness" />
                         <div class="img-text">
-                            <h3>Swoldier Fitness</h3>
+                            <h3 class="text-shadow">Swoldier Fitness</h3>
                             <div class="project-links">
-                                <a>
+                                <!-- <a>
                                     <p>source </p><i class="fa-solid fa-code"></i>
-                                </a>
+                                </a> -->
                                 <a href="https://www.swoldierfitness.com" target="_blank">
                                     <p>live</p><i class="fa-solid fa-bolt"></i>
                                 </a>
@@ -422,12 +442,26 @@
                     <div class="project-item">
                         <img src="/public/rm.png" alt="swoldier-fitness" />
                         <div class="img-text">
-                            <h3>Swoldier Fitness</h3>
+                            <h3 class="text-shadow">Webdev Codemap</h3>
                             <div class="project-links">
-                                <a>
+                                <!-- <a>
+                                    <p>source </p><i class="fa-solid fa-code"></i>
+                                </a> -->
+                                <a href="https://famous-kashata-6dcdd0.netlify.app/" target="_blank">
+                                    <p>live</p><i class="fa-solid fa-bolt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="/public/stocks.png" alt="swoldier-fitness" />
+                        <div class="img-text">
+                            <h3 class="text-shadow">Stock Analysis</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/jamezmca/svelte-fullstack" target="_blank">
                                     <p>source </p><i class="fa-solid fa-code"></i>
                                 </a>
-                                <a href="https://www.swoldierfitness.com" target="_blank">
+                                <a href="https://dreamy-darwin-658120.netlify.app/" target="_blank">
                                     <p>live</p><i class="fa-solid fa-bolt"></i>
                                 </a>
                             </div>
@@ -436,12 +470,12 @@
                     <div class="project-item">
                         <img src="/public/mg.png" alt="swoldier-fitness" />
                         <div class="img-text">
-                            <h3>Swoldier Fitness</h3>
+                            <h3 class="text-shadow">Moonglade Apparel</h3>
                             <div class="project-links">
-                                <a>
+                                <!-- <a>
                                     <p>source </p><i class="fa-solid fa-code"></i>
-                                </a>
-                                <a href="https://www.swoldierfitness.com" target="_blank">
+                                </a> -->
+                                <a href="https://moongladeapparel.com/" target="_blank">
                                     <p>live</p><i class="fa-solid fa-bolt"></i>
                                 </a>
                             </div>
@@ -452,13 +486,13 @@
         </section>
     </main>
     <footer>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/jamezmcarthur/" target="_blank">
             <i class="fa-brands fa-linkedin"></i>
         </a>
-        <a href="#">
-            <i class="fa-brands fa-codepen"></i>
+        <a href="https://www.youtube.com/c/Smoljames/" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
         </a>
-        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="https://github.com/jamezmca" target="_blank"><i class="fa-brands fa-github"></i></a>
     </footer>
 </body>
 
