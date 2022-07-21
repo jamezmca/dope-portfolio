@@ -21,6 +21,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Jost', sans-serif;
+            /* font-family: 'Mali', cursive; */
+
             transition-duration: 300ms;
             scroll-behavior: smooth;
         }
@@ -42,9 +44,14 @@
         }
 
         header h1 {
-            font-family: 'Oswald', sans-serif;
             font-size: 4.6rem;
             user-select: none;
+        }
+
+        header h1,
+        .section-header {
+            font-family: 'oswald', monospace;
+
         }
 
         header div {
@@ -94,12 +101,18 @@
             text-decoration: none;
         }
 
+        main {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
         section {
             min-height: 100vh;
             padding: 10px;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            scroll-snap-align: start;
         }
 
         section:nth-child(2n) {
@@ -110,7 +123,7 @@
         .section-header {
             text-align: center;
             text-transform: uppercase;
-            font-family: 'Oswald', sans-serif;
+            /* font-family: 'Orbitron', sans-serif; */
             position: relative;
             width: 100%;
             max-width: 85ch;
@@ -197,6 +210,7 @@
             justify-content: center;
             position: relative;
             border: 1px solid transparent;
+            overflow: hidden;
 
         }
 
@@ -213,21 +227,77 @@
 
         }
 
-        .img-text {
+
+        .img-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
+            height: 100%;
+            /* background: #0f172a; */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(calc(100% - 67px));
+            /* overflow-y: scroll; */
+        }
+
+        .img-overlay::before {
+            position: absolute;
+            content: '';
+            background: #0f172a;
+            opacity: 0.3;
+            inset: 0;
+            z-index: -1;
+            transition-duration: 300ms;
+
+        }
+
+        .project-item:hover .img-overlay {
+            transform: translateY(0);
+
+        }
+
+        .project-item:hover .img-overlay::before {
+            opacity: 1;
+        }
+
+        .img-content {
+            padding: 0 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: scroll;
+        }
+
+        .img-content p {
+            /* display: none; */
+            /* overflow: scroll; */
+        }
+
+        .img-header {
             background: linear-gradient(to bottom, transparent, #0f172a);
-            padding: 20px 12px;
+            /* padding: 20px 12px; */
             color: white;
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 0.9em;
+            padding: 20px;
+            position: relative;
         }
 
-        .img-text h3 {
+        .img-header::before {
+            position: absolute;
+            content: '';
+            background: linear-gradient(to bottom, transparent, #0f172a);
+            /* opacity: 0; */
+            inset: 0;
+            z-index: -1;
+        }
+
+        .img-header h3 {
             font-weight: 700;
             text-transform: uppercase;
             font-family: 'Oswald', sans-serif;
@@ -266,6 +336,39 @@
             font-size: 0.8em;
         }
 
+        .tech {
+            display: flex;
+            margin: 0 auto;
+            width: fit-content;
+            gap: 8px;
+            /* flex: 1; */
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 4px 0;
+            padding-bottom: 10px;
+        }
+
+        .tech-item {
+            height: 30px;
+            width: 30px;
+            /* border-radius: 50%; */
+            box-shadow: 0 0 6px 1px cyan;
+            display: grid;
+            place-items: center;
+            border: 1px solid cyan;
+            /* padding: 1px; */
+            /* background: green; */
+            overflow: hidden;
+        }
+
+        .tech-item img {
+            object-fit: cover;
+            width: 100%;
+            /* height: auto; */
+            height: 100%;
+        }
+
         footer {
             display: flex;
             justify-content: center;
@@ -291,8 +394,9 @@
         }
 
         @media (min-width: 640px) {
+
             header h1 {
-                font-size: 6em;
+                font-size: 7em;
             }
 
             header ul {
@@ -308,12 +412,21 @@
                 font-size: 1em;
             }
 
-            .img-text {
+            .img-content {
                 font-size: 1em;
             }
 
-            .img-text h3 {
+            .img-content h3 {
                 font-size: 1.7em;
+            }
+
+            .tech-item {
+                height: 40px;
+                width: 40px;
+            }
+
+            .tech {
+                gap: 14px;
             }
 
             footer {
@@ -389,11 +502,14 @@
                                 <p>11/21 - present</p>
                             </div>
                         </div>
-                        <p>Primary contributer to the Zetane Systems Protector platform. The platform is a Saas product
+                        <p>Developed the Zetane Systems Protector platform. The platform is a Saas product
                             aimed to improve Quality Assurance processes for machine learning and AI applications.</p>
+                        <p>Developed the Protector Python API & CLI tool. This tool provides an equivalent service to
+                            the Saas frontend.</p>
                         <p>The platform frontend is built in Next.js + TailwindCSS with a Django + PostgreSQL + Redis
                             backend. The platform is hosted on AWS and we run our patented machine learning code in
-                            virtual, dockerized instances spun up with kubernetes using AWS EKS service.</p>
+                            virtual, dockerized instances spun up with kubernetes using AWS EKS service. Sentry and
+                            Cypress are used for user analytics and testing respectively.</p>
                     </div>
                     <div class="resume-item">
                         <div class="experience-header">
@@ -427,57 +543,83 @@
                 <div class="project-grid">
                     <div class="project-item">
                         <img src="/public/sf.png" alt="swoldier-fitness" />
-                        <div class="img-text">
-                            <h3 class="text-shadow">Swoldier Fitness</h3>
-                            <div class="project-links">
-                                <!-- <a>
-                                    <p>source </p><i class="fa-solid fa-code"></i>
-                                </a> -->
-                                <a href="https://www.swoldierfitness.com" target="_blank">
-                                    <p>live</p><i class="fa-solid fa-bolt"></i>
-                                </a>
+                        <div class="img-overlay">
+                            <div class="img-header">
+                                <h3 class="text-shadow">Swoldier Fitness</h3>
+                                <div class="project-links">
+                                    <!-- <a>
+                                        <p>source </p><i class="fa-solid fa-code"></i>
+                                    </a> -->
+                                    <a href="https://www.swoldierfitness.com" target="_blank">
+                                        <p>live</p><i class="fa-solid fa-bolt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="img-content">
+                                <div class="tech">
+                                    <div class="tech-item">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png"
+                                            alt="react" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <img src="data:image/png;base64,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"
+                                            alt="nextjs" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <img src="https://cdn.iconscout.com/icon/free/png-256/node-js-1174925.png"
+                                            alt="node" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <img src="https://logos-world.net/wp-content/uploads/2021/03/Stripe-Emblem.png"
+                                            alt="stripe" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <img src="https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png"
+                                            alt="firebase" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <img src="data:image/png;base64,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"
+                                            alt="tailwind" />
+                                    </div>
+                                </div>
+                                <p>Swoldier fitness is a workout generation and tracking platform to help make personal
+                                    training accessible to masses. The platform provides informational, structural and
+                                    analytical tools so to enable your exercise habits. These lower the barrier to entry
+                                    for people to improve their physical health and wellbeing. The system has both free and paid subscriber tiers.</p>
+
                             </div>
                         </div>
                     </div>
                     <div class="project-item">
                         <img src="/public/rm.png" alt="swoldier-fitness" />
-                        <div class="img-text">
-                            <h3 class="text-shadow">Webdev Codemap</h3>
-                            <div class="project-links">
-                                <!-- <a>
-                                    <p>source </p><i class="fa-solid fa-code"></i>
-                                </a> -->
-                                <a href="https://famous-kashata-6dcdd0.netlify.app/" target="_blank">
-                                    <p>live</p><i class="fa-solid fa-bolt"></i>
-                                </a>
+                        <div class="img-overlay">
+                            <div class="img-header">
+                                <h3 class="text-shadow">Webdev Codemap</h3>
+                                <div class="project-links">
+                                    <!-- <a>
+                                            <p>source </p><i class="fa-solid fa-code"></i>
+                                        </a> -->
+                                    <a href="https://famous-kashata-6dcdd0.netlify.app/" target="_blank">
+                                        <p>live</p><i class="fa-solid fa-bolt"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <img src="/public/stocks.png" alt="swoldier-fitness" />
-                        <div class="img-text">
-                            <h3 class="text-shadow">Stock Analysis</h3>
-                            <div class="project-links">
-                                <a href="https://github.com/jamezmca/svelte-fullstack" target="_blank">
-                                    <p>source </p><i class="fa-solid fa-code"></i>
-                                </a>
-                                <a href="https://dreamy-darwin-658120.netlify.app/" target="_blank">
-                                    <p>live</p><i class="fa-solid fa-bolt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <img src="/public/mg.png" alt="swoldier-fitness" />
-                        <div class="img-text">
-                            <h3 class="text-shadow">Moonglade Apparel</h3>
-                            <div class="project-links">
-                                <!-- <a>
-                                    <p>source </p><i class="fa-solid fa-code"></i>
-                                </a> -->
-                                <a href="https://moongladeapparel.com/" target="_blank">
-                                    <p>live</p><i class="fa-solid fa-bolt"></i>
-                                </a>
+                            <div class="img-content">
+                                <div class="tech">
+                                    <div class="tech-item">
+                                        <img src="https://external-preview.redd.it/N8QXy6buALzMJTQQuaRZoUF0fEAPQfAUZOkkN-EK4V0.jpg?auto=webp&s=6375f84a45d3a1effb4fae22175cc6c63a2dd11d"
+                                            alt="sveltekit" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <img src="data:image/png;base64,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"
+                                            alt="react" />
+                                    </div>
+
+                                </div>
+                                <p>
+                                    The Webdev Codemap is an web app that aims to amalgamate all of the top, free, online learning resources for self-teaching web development. It structures said resources into a fun and interactive roadmap that provides the user with a more personal and engaging learning experience as they work through the content.
+                                </p>
+
                             </div>
                         </div>
                     </div>
